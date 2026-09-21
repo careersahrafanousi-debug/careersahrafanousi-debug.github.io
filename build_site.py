@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sahra Fanousi — Healthcare Operations Analytics</title>
-<meta name="description" content="Healthcare appeals analyst. 5 end-to-end analytics projects on synthetic payer operations data: SQL, Power BI, Tableau, and live dashboards.">
-<meta property="og:title" content="Sahra Fanousi — Healthcare Operations Analytics">
-<meta property="og:description" content="5 end-to-end analytics projects on synthetic payer operations data.">
-<meta property="og:type" content="website">
-<style>
+#!/usr/bin/env python3
+"""Render index.html from projects.json. Add a project to the JSON, re-run this."""
+import json, html, pathlib
+
+D = json.load(open(pathlib.Path(__file__).parent / "projects.json"))
+U = D["user"]
+ALL = [p for g in D["groups"] for p in g["projects"]]
+
+CSS = """
 *{box-sizing:border-box}
 :root{
   --bg:#0f1419; --bg2:#0c1116; --panel:#171d24; --panel2:#1b2229; --line:#2a333f;
@@ -120,7 +118,51 @@ code{font-family:var(--mono);font-size:.88em;background:#10161c;border:1px solid
   border-radius:4px;padding:1px 5px}
 footer{padding:44px 0 60px;color:var(--muted);font-size:.9rem}
 footer a{color:var(--muted);text-decoration:underline}
-</style>
+"""
+
+def card(p):
+    ms = "".join(
+        f'<div class="m {m.get("tone","")}"><b>{html.escape(m["v"])}</b>'
+        f'<span>{html.escape(m["l"])}</span></div>' for m in p["metrics"])
+    tg = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in p["tags"])
+    return f"""      <article class="card">
+        <h4><a href="https://github.com/{U}/{p['repo']}">{html.escape(p['title'])}</a></h4>
+        <p class="q">{html.escape(p['q'])}</p>
+        <div class="mrow">{ms}</div>
+        <p class="finding">{p['finding']}</p>
+        <div class="tags">{tg}</div>
+        <div class="cardlinks">
+          <a class="chip live" href="https://{U}.github.io/{p['repo']}/dashboard/">Live dashboard</a>
+          <a class="chip" href="https://github.com/{U}/{p['repo']}">Code and docs</a>
+        </div>
+      </article>"""
+
+groups = "".join(
+    f'\n    <h3 class="grp">{html.escape(g["label"])}</h3>\n'
+    f'    <p class="grpnote">{html.escape(g["blurb"])}</p>\n'
+    f'    <div class="grid">\n' + "\n".join(card(p) for p in g["projects"]) + "\n    </div>"
+    for g in D["groups"])
+
+skills = "".join(
+    f'<div class="sk"><h5>{html.escape(s["group"])}</h5><ul>'
+    + "".join(f"<li>{html.escape(i)}</li>" for i in s["items"])
+    + "</ul></div>" for s in D["skills"])
+
+STRIP = [("%d" % len(ALL), "end-to-end projects"), ("%d" % len(ALL), "live dashboards"),
+         ("115k+", "synthetic records"), ("4", "BI outputs each"), ("100%", "synthetic data")]
+strip = "".join(f"<div><b>{v}</b><span>{l}</span></div>" for v, l in STRIP)
+
+HTML = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahra Fanousi — Healthcare Operations Analytics</title>
+<meta name="description" content="Healthcare appeals analyst. {len(ALL)} end-to-end analytics projects on synthetic payer operations data: SQL, Power BI, Tableau, and live dashboards.">
+<meta property="og:title" content="Sahra Fanousi — Healthcare Operations Analytics">
+<meta property="og:description" content="{len(ALL)} end-to-end analytics projects on synthetic payer operations data.">
+<meta property="og:type" content="website">
+<style>{CSS}</style>
 </head>
 <body>
 
@@ -130,7 +172,7 @@ footer a{color:var(--muted);text-decoration:underline}
   <a class="nl" href="#skills">Skills</a>
   <a class="nl" href="#built">How it's built</a>
   <a class="nl" href="#data">About the data</a>
-  <a class="nl" href="https://github.com/careersahrafanousi-debug">GitHub</a>
+  <a class="nl" href="https://github.com/{U}">GitHub</a>
 </div></nav>
 
 <header><div class="wrap">
@@ -143,88 +185,25 @@ footer a{color:var(--muted);text-decoration:underline}
   (May 2027). Based in Texas, open to remote analyst and BI roles.</p>
   <div class="links">
     <a class="btn primary" href="#work">See the work</a>
-    <a class="btn" href="https://github.com/careersahrafanousi-debug">GitHub</a>
+    <a class="btn" href="https://github.com/{U}">GitHub</a>
     <a class="btn" href="mailto:careersahrafanousi@gmail.com">careersahrafanousi@gmail.com</a>
   </div>
-  <div class="strip"><div><b>5</b><span>end-to-end projects</span></div><div><b>5</b><span>live dashboards</span></div><div><b>115k+</b><span>synthetic records</span></div><div><b>4</b><span>BI outputs each</span></div><div><b>100%</b><span>synthetic data</span></div></div>
+  <div class="strip">{strip}</div>
 </div></header>
 
 <section id="work"><div class="wrap">
   <h2>Portfolio</h2>
-  <p class="h2note">5 end-to-end projects on fully synthetic healthcare data. Each one ships
+  <p class="h2note">{len(ALL)} end-to-end projects on fully synthetic healthcare data. Each one ships
   runnable code, a data-quality gate that excludes bad records rather than quietly fixing
   them, SQL analysis, a live dashboard, and the business-analysis documents that turn a
   finding into something a team can implement.</p>
-  
-    <h3 class="grp">Throughput and deadlines</h3>
-    <p class="grpnote">Where operational work loses time, and what to change.</p>
-    <div class="grid">
-      <article class="card">
-        <h4><a href="https://github.com/careersahrafanousi-debug/appeals-friction-radar">Appeals Friction Radar</a></h4>
-        <p class="q">Where does an appeal actually lose its days?</p>
-        <div class="mrow"><div class="m bad"><b>16.5%</b><span>urgent SLA compliance</span></div><div class="m "><b>15.5d</b><span>vs 7-day target</span></div><div class="m "><b>35,443</b><span>workflow events</span></div></div>
-        <p class="finding">The queue with the <strong>tightest</strong> deadline is the one that misses it. Urgent appeals take 15.5 days against a 7-day target; standard appeals take 14.8 against 30. Stage dwell time measured with SQL window functions.</p>
-        <div class="tags"><span class="tag">SQL window functions</span><span class="tag">Process mapping</span><span class="tag">SLA analysis</span></div>
-        <div class="cardlinks">
-          <a class="chip live" href="https://careersahrafanousi-debug.github.io/appeals-friction-radar/dashboard/">Live dashboard</a>
-          <a class="chip" href="https://github.com/careersahrafanousi-debug/appeals-friction-radar">Code and docs</a>
-        </div>
-      </article>
-      <article class="card">
-        <h4><a href="https://github.com/careersahrafanousi-debug/case-assignment-fairness">Case Assignment Fairness</a></h4>
-        <p class="q">Are some teams slower, or are they handed harder work?</p>
-        <div class="mrow"><div class="m warn"><b>41%</b><span>of lateness from 14% of cases</span></div><div class="m "><b>79h</b><span>vs 48-hour target</span></div><div class="m "><b>15,908</b><span>cases · 35 analysts</span></div></div>
-        <p class="finding">A 25.9%–84.2% spread across teams looked like a performance gap. It was routing: 14% of cases produced <strong>41% of all lateness</strong>. This reversed the stakeholder's starting hypothesis.</p>
-        <div class="tags"><span class="tag">Root-cause analysis</span><span class="tag">Workload equity</span><span class="tag">Routing design</span></div>
-        <div class="cardlinks">
-          <a class="chip live" href="https://careersahrafanousi-debug.github.io/case-assignment-fairness/dashboard/">Live dashboard</a>
-          <a class="chip" href="https://github.com/careersahrafanousi-debug/case-assignment-fairness">Code and docs</a>
-        </div>
-      </article>
-      <article class="card">
-        <h4><a href="https://github.com/careersahrafanousi-debug/capacity-to-deadline-optimizer">Capacity-to-Deadline Optimizer</a></h4>
-        <p class="q">Can cancelled slots be refilled from the waitlist in time?</p>
-        <div class="mrow"><div class="m good"><b>5.3%</b><span>no-show with reminder</span></div><div class="m "><b>507</b><span>refillable slots</span></div><div class="m "><b>13,951</b><span>appointments</span></div></div>
-        <p class="finding">Reminders cut no-shows from 15.7% to <strong>5.3%</strong>. Found 507 refillable cancelled slots and ranked 1,786 waitlisted patients against them with a match score, so a scheduler knows who to call.</p>
-        <div class="tags"><span class="tag">Scoring model</span><span class="tag">Capacity planning</span><span class="tag">Scenario analysis</span></div>
-        <div class="cardlinks">
-          <a class="chip live" href="https://careersahrafanousi-debug.github.io/capacity-to-deadline-optimizer/dashboard/">Live dashboard</a>
-          <a class="chip" href="https://github.com/careersahrafanousi-debug/capacity-to-deadline-optimizer">Code and docs</a>
-        </div>
-      </article>
-    </div>
-    <h3 class="grp">Dollars and data trust</h3>
-    <p class="grpnote">Where money leaks, and whether the numbers can be trusted.</p>
-    <div class="grid">
-      <article class="card">
-        <h4><a href="https://github.com/careersahrafanousi-debug/denial-prevention-simulator">Denial Prevention Simulator</a></h4>
-        <p class="q">Which denials were preventable before the claim went out?</p>
-        <div class="mrow"><div class="m warn"><b>82.7%</b><span>of denied dollars preventable</span></div><div class="m "><b>$4.48M</b><span>modeled opportunity</span></div><div class="m "><b>11,967</b><span>claims</span></div></div>
-        <p class="finding">Of $5.42M denied, <strong>$4.48M — 82.7% of denied dollars</strong> — traces to five causes checkable at submission. Turned that into a pre-submission risk queue that scores claims before they leave.</p>
-        <div class="tags"><span class="tag">Risk scoring</span><span class="tag">Control design</span><span class="tag">Cost analysis</span></div>
-        <div class="cardlinks">
-          <a class="chip live" href="https://careersahrafanousi-debug.github.io/denial-prevention-simulator/dashboard/">Live dashboard</a>
-          <a class="chip" href="https://github.com/careersahrafanousi-debug/denial-prevention-simulator">Code and docs</a>
-        </div>
-      </article>
-      <article class="card">
-        <h4><a href="https://github.com/careersahrafanousi-debug/kpi-trust-ledger">KPI Trust Ledger</a></h4>
-        <p class="q">Why does the same KPI have four different values?</p>
-        <div class="mrow"><div class="m bad"><b>2 of 6</b><span>KPIs certified</span></div><div class="m "><b>4 values</b><span>for one backlog metric</span></div><div class="m "><b>3</b><span>source systems reconciled</span></div></div>
-        <p class="finding">Backlog reported as <strong>423 / 611 / 509 / 211</strong> depending on which system you asked. Attributed every variance, certified 2 of 6 KPIs for leadership use, and documented exactly why the other four could not be.</p>
-        <div class="tags"><span class="tag">Data reconciliation</span><span class="tag">KPI governance</span><span class="tag">Definitions and lineage</span></div>
-        <div class="cardlinks">
-          <a class="chip live" href="https://careersahrafanousi-debug.github.io/kpi-trust-ledger/dashboard/">Live dashboard</a>
-          <a class="chip" href="https://github.com/careersahrafanousi-debug/kpi-trust-ledger">Code and docs</a>
-        </div>
-      </article>
-    </div>
+  {groups}
 </div></section>
 
 <section id="skills"><div class="wrap">
   <h2>Skills</h2>
   <p class="h2note">Every item below is used in at least one project in this portfolio, not just listed.</p>
-  <div class="skills"><div class="sk"><h5>Query and model</h5><ul><li>SQL — window functions, CTEs</li><li>Star schema design</li><li>SQLite</li><li>Data quality gates</li></ul></div><div class="sk"><h5>Visualize</h5><ul><li>Power BI — DAX, TMDL</li><li>Tableau</li><li>Excel — pivots, openpyxl</li><li>Interactive HTML dashboards</li></ul></div><div class="sk"><h5>Build</h5><ul><li>Python — pandas, matplotlib</li><li>ETL pipelines</li><li>Git version control</li></ul></div><div class="sk"><h5>Business analysis</h5><ul><li>Requirements and acceptance criteria</li><li>Process mapping</li><li>UAT test cases</li><li>Stakeholder readouts</li></ul></div></div>
+  <div class="skills">{skills}</div>
 </div></section>
 
 <section id="built"><div class="wrap">
@@ -250,7 +229,7 @@ python src/build_bi_assets.py <span class="cmt"># Excel, Tableau, Power BI, char
 
 <section id="data"><div class="wrap">
   <h2>About the data</h2>
-  <p>All 5 projects use fully synthetic data generated by the scripts in each repository.
+  <p>All {len(ALL)} projects use fully synthetic data generated by the scripts in each repository.
   They do not use employer data, patient information, protected health information, or
   confidential business information. The operational patterns are modeled on real ones;
   the records are not real.</p>
@@ -258,9 +237,13 @@ python src/build_bi_assets.py <span class="cmt"># Excel, Tableau, Power BI, char
 
 <footer><div class="wrap">
   Built and maintained by Sahra Fanousi ·
-  <a href="https://github.com/careersahrafanousi-debug">github.com/careersahrafanousi-debug</a> ·
+  <a href="https://github.com/{U}">github.com/{U}</a> ·
   <a href="mailto:careersahrafanousi@gmail.com">careersahrafanousi@gmail.com</a>
 </div></footer>
 
 </body>
 </html>
+"""
+out = pathlib.Path(__file__).parent / "index.html"
+out.write_text(HTML)
+print(f"wrote {out} ({len(HTML)} bytes, {len(ALL)} projects, {len(D['groups'])} groups)")

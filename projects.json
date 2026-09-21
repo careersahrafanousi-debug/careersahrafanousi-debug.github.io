@@ -1,0 +1,85 @@
+{
+  "user": "careersahrafanousi-debug",
+  "groups": [
+    {
+      "id": "throughput",
+      "label": "Throughput and deadlines",
+      "blurb": "Where operational work loses time, and what to change.",
+      "projects": [
+        {
+          "repo": "appeals-friction-radar",
+          "title": "Appeals Friction Radar",
+          "q": "Where does an appeal actually lose its days?",
+          "finding": "The queue with the <strong>tightest</strong> deadline is the one that misses it. Urgent appeals take 15.5 days against a 7-day target; standard appeals take 14.8 against 30. Stage dwell time measured with SQL window functions.",
+          "metrics": [
+            {"v": "16.5%", "l": "urgent SLA compliance", "tone": "bad"},
+            {"v": "15.5d", "l": "vs 7-day target"},
+            {"v": "35,443", "l": "workflow events"}
+          ],
+          "tags": ["SQL window functions", "Process mapping", "SLA analysis"]
+        },
+        {
+          "repo": "case-assignment-fairness",
+          "title": "Case Assignment Fairness",
+          "q": "Are some teams slower, or are they handed harder work?",
+          "finding": "A 25.9%–84.2% spread across teams looked like a performance gap. It was routing: 14% of cases produced <strong>41% of all lateness</strong>. This reversed the stakeholder's starting hypothesis.",
+          "metrics": [
+            {"v": "41%", "l": "of lateness from 14% of cases", "tone": "warn"},
+            {"v": "79h", "l": "vs 48-hour target"},
+            {"v": "15,908", "l": "cases · 35 analysts"}
+          ],
+          "tags": ["Root-cause analysis", "Workload equity", "Routing design"]
+        },
+        {
+          "repo": "capacity-to-deadline-optimizer",
+          "title": "Capacity-to-Deadline Optimizer",
+          "q": "Can cancelled slots be refilled from the waitlist in time?",
+          "finding": "Reminders cut no-shows from 15.7% to <strong>5.3%</strong>. Found 507 refillable cancelled slots and ranked 1,786 waitlisted patients against them with a match score, so a scheduler knows who to call.",
+          "metrics": [
+            {"v": "5.3%", "l": "no-show with reminder", "tone": "good"},
+            {"v": "507", "l": "refillable slots"},
+            {"v": "13,951", "l": "appointments"}
+          ],
+          "tags": ["Scoring model", "Capacity planning", "Scenario analysis"]
+        }
+      ]
+    },
+    {
+      "id": "money",
+      "label": "Dollars and data trust",
+      "blurb": "Where money leaks, and whether the numbers can be trusted.",
+      "projects": [
+        {
+          "repo": "denial-prevention-simulator",
+          "title": "Denial Prevention Simulator",
+          "q": "Which denials were preventable before the claim went out?",
+          "finding": "Of $5.42M denied, <strong>$4.48M — 82.7% of denied dollars</strong> — traces to five causes checkable at submission. Turned that into a pre-submission risk queue that scores claims before they leave.",
+          "metrics": [
+            {"v": "82.7%", "l": "of denied dollars preventable", "tone": "warn"},
+            {"v": "$4.48M", "l": "modeled opportunity"},
+            {"v": "11,967", "l": "claims"}
+          ],
+          "tags": ["Risk scoring", "Control design", "Cost analysis"]
+        },
+        {
+          "repo": "kpi-trust-ledger",
+          "title": "KPI Trust Ledger",
+          "q": "Why does the same KPI have four different values?",
+          "finding": "Backlog reported as <strong>423 / 611 / 509 / 211</strong> depending on which system you asked. Attributed every variance, certified 2 of 6 KPIs for leadership use, and documented exactly why the other four could not be.",
+          "metrics": [
+            {"v": "2 of 6", "l": "KPIs certified", "tone": "bad"},
+            {"v": "4 values", "l": "for one backlog metric"},
+            {"v": "3", "l": "source systems reconciled"}
+          ],
+          "tags": ["Data reconciliation", "KPI governance", "Definitions and lineage"]
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {"group": "Query and model", "items": ["SQL — window functions, CTEs", "Star schema design", "SQLite", "Data quality gates"]},
+    {"group": "Visualize", "items": ["Power BI — DAX, TMDL", "Tableau", "Excel — pivots, openpyxl", "Interactive HTML dashboards"]},
+    {"group": "Build", "items": ["Python — pandas, matplotlib", "ETL pipelines", "Git version control"]},
+    {"group": "Business analysis", "items": ["Requirements and acceptance criteria", "Process mapping", "UAT test cases", "Stakeholder readouts"]}
+  ]
+}
