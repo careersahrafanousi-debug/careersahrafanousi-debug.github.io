@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahra Fanousi — Healthcare Operations Analytics</title>
+<meta name="description" content="Healthcare appeals analyst. Five end-to-end analytics projects on synthetic payer operations data: SQL, Power BI, Tableau, and live dashboards.">
+<style>
+  :root{
+    --bg:#0f1419; --panel:#171d24; --line:#2a333f;
+    --text:#e6edf3; --muted:#8b98a5; --accent:#4c9aff; --accent-soft:#9dc4ff;
+    --good:#35b77d; --warn:#e0a33e; --bad:#e05c5c;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+       line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent-soft);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header{border-bottom:1px solid var(--line);padding:72px 0 44px;margin-bottom:8px}
+  h1{font-size:2.5rem;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em;font-weight:650}
+  .role{color:var(--accent);font-family:var(--mono);font-size:.9rem;
+        letter-spacing:.06em;text-transform:uppercase;margin:0 0 20px}
+  .lede{font-size:1.1rem;color:#c5d1dd;max-width:66ch;margin:0 0 8px}
+  .meta{color:var(--muted);font-size:.95rem;max-width:66ch;margin:14px 0 0}
+  .links{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-block;padding:9px 16px;border:1px solid var(--line);
+       border-radius:7px;background:var(--panel);color:var(--text);font-size:.92rem;
+       transition:border-color .15s, background .15s}
+  .btn:hover{border-color:var(--accent);background:#1c242d;text-decoration:none}
+  .btn.primary{border-color:#2f5c96;background:#15243a}
+
+  h2{font-size:.82rem;font-family:var(--mono);letter-spacing:.11em;text-transform:uppercase;
+     color:var(--muted);margin:56px 0 4px;font-weight:600}
+  .h2note{color:var(--muted);font-size:.95rem;margin:0 0 24px;max-width:70ch}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+        padding:22px 24px;margin-bottom:14px;transition:border-color .15s}
+  .card:hover{border-color:#3a4654}
+  .card h3{margin:0 0 4px;font-size:1.12rem;font-weight:620}
+  .card h3 a{color:var(--text)}
+  .card h3 a:hover{color:var(--accent-soft)}
+  .q{color:var(--muted);font-size:.88rem;font-family:var(--mono);margin:0 0 12px}
+  .finding{margin:0 0 16px;color:#c5d1dd}
+  .finding strong{color:var(--text);font-weight:620}
+  .cardlinks{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.83rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);
+        background:#11171d;color:var(--accent-soft)}
+  .chip:hover{border-color:var(--accent);text-decoration:none}
+
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:9px;
+      padding:18px 20px;overflow-x:auto;font-family:var(--mono);font-size:.85rem;
+      color:#c5d1dd;line-height:1.7}
+  .cmt{color:var(--muted)}
+  p{max-width:70ch}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+  .tool{font-size:.85rem;padding:6px 12px;border-radius:6px;background:var(--panel);
+        border:1px solid var(--line);color:#c5d1dd}
+  .note{border-left:2px solid var(--warn);padding:2px 0 2px 18px;color:var(--muted);
+        font-size:.95rem;margin:20px 0 0}
+  footer{border-top:1px solid var(--line);margin-top:72px;padding:28px 0 56px;
+         color:var(--muted);font-size:.9rem}
+  @media(max-width:600px){
+    header{padding:48px 0 32px} h1{font-size:2rem} .lede{font-size:1.02rem}
+  }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <p class="role">Healthcare Operations &middot; Business Analysis &middot; Analytics</p>
+  <h1>Sahra Fanousi</h1>
+  <p class="lede">I work appeals on the operations side of a payer &mdash; intake through
+  adjudication &mdash; and I build the SQL and reporting that operations leaders use to
+  decide where to put people and money.</p>
+  <p class="meta">Finishing an M.S. in Business Analytics and AI at Lamar University
+  (May 2027). Based in Texas, open to remote analyst and BI roles.</p>
+  <div class="links">
+    <a class="btn primary" href="https://github.com/careersahrafanousi-debug">GitHub</a>
+    <a class="btn" href="mailto:careersahrafanousi@gmail.com">careersahrafanousi@gmail.com</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <h2>Portfolio</h2>
+  <p class="h2note">Five end-to-end projects on fully synthetic healthcare data. Each ships
+  runnable code, a data-quality gate that excludes bad records rather than quietly fixing
+  them, SQL analysis, a live dashboard, and the business-analysis documents that turn a
+  finding into something a team can implement.</p>
+
+  <div class="card">
+    <h3><a href="https://github.com/careersahrafanousi-debug/appeals-friction-radar">Appeals Friction Radar</a></h3>
+    <p class="q">Where does an appeal actually lose its days?</p>
+    <p class="finding">Urgent appeals take <strong>15.5 days against a 7-day target</strong>
+    while standard appeals take 14.8 against 30. The queue with the tightest deadline is the
+    one that misses it &mdash; SLA compliance collapses to <strong>16.5%</strong>. Built on
+    3,966 appeals and 35,443 workflow events with SQL window functions measuring stage dwell time.</p>
+    <div class="cardlinks">
+      <a class="chip" href="https://careersahrafanousi-debug.github.io/appeals-friction-radar/dashboard/">Live dashboard</a>
+      <a class="chip" href="https://github.com/careersahrafanousi-debug/appeals-friction-radar">Code &amp; docs</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/careersahrafanousi-debug/denial-prevention-simulator">Denial Prevention Simulator</a></h3>
+    <p class="q">Which denials were preventable before the claim went out?</p>
+    <p class="finding">Of <strong>$5.42M denied</strong> across 11,967 claims,
+    <strong>$4.48M &mdash; 82.7% of denied dollars</strong> &mdash; traces to five causes that
+    are checkable at submission. Turned that into a pre-submission risk queue that scores
+    unsubmitted claims before they leave.</p>
+    <div class="cardlinks">
+      <a class="chip" href="https://careersahrafanousi-debug.github.io/denial-prevention-simulator/dashboard/">Live dashboard</a>
+      <a class="chip" href="https://github.com/careersahrafanousi-debug/denial-prevention-simulator">Code &amp; docs</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/careersahrafanousi-debug/case-assignment-fairness">Case Assignment Fairness</a></h3>
+    <p class="q">Are some teams slower, or are they being handed harder work?</p>
+    <p class="finding">Team SLA compliance ranged from <strong>25.9% to 84.2%</strong>, which
+    looked like a performance gap. It was routing: 14% of cases &mdash; Authorization Review,
+    averaging 79 hours against a 48-hour target &mdash; produced <strong>41% of all
+    lateness</strong>. This reversed the stakeholder's starting hypothesis, across 15,908
+    cases and 35 analysts.</p>
+    <div class="cardlinks">
+      <a class="chip" href="https://careersahrafanousi-debug.github.io/case-assignment-fairness/dashboard/">Live dashboard</a>
+      <a class="chip" href="https://github.com/careersahrafanousi-debug/case-assignment-fairness">Code &amp; docs</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/careersahrafanousi-debug/kpi-trust-ledger">KPI Trust Ledger</a></h3>
+    <p class="q">Why does the same KPI have four different values?</p>
+    <p class="finding">Six appeals KPIs reconciled across three source systems. Backlog alone
+    reported as <strong>423 / 611 / 509 / 211</strong> depending on which system you asked.
+    Attributed every variance, then <strong>certified 2 of 6</strong> for leadership use and
+    documented exactly why the other four could not be.</p>
+    <div class="cardlinks">
+      <a class="chip" href="https://careersahrafanousi-debug.github.io/kpi-trust-ledger/dashboard/">Live dashboard</a>
+      <a class="chip" href="https://github.com/careersahrafanousi-debug/kpi-trust-ledger">Code &amp; docs</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/careersahrafanousi-debug/capacity-to-deadline-optimizer">Capacity-to-Deadline Optimizer</a></h3>
+    <p class="q">Can cancelled slots be refilled from the waitlist in time?</p>
+    <p class="finding">No-show rate is <strong>5.3% with a reminder and 15.7% without</strong>.
+    Found <strong>507 refillable</strong> cancelled slots and ranked 1,786 waitlisted patients
+    against them with a match score, across 13,951 appointments and 22 providers.</p>
+    <div class="cardlinks">
+      <a class="chip" href="https://careersahrafanousi-debug.github.io/capacity-to-deadline-optimizer/dashboard/">Live dashboard</a>
+      <a class="chip" href="https://github.com/careersahrafanousi-debug/capacity-to-deadline-optimizer">Code &amp; docs</a>
+    </div>
+  </div>
+
+  <h2>How they're built</h2>
+  <p class="h2note">Every repository runs the same way from a clean clone:</p>
+<pre>python src/generate_data.py    <span class="cmt"># synthetic source files</span>
+python src/dq_checks.py        <span class="cmt"># data-quality gate</span>
+python src/load_sqlite.py      <span class="cmt"># star schema</span>
+python src/build_dashboard.py  <span class="cmt"># interactive HTML</span>
+python src/build_bi_assets.py  <span class="cmt"># Excel, Tableau, Power BI, charts</span></pre>
+  <p>The last step is the part worth a conversation. One file of SQL is the single
+  definition of every number, and one generator renders it into five outputs: the
+  interactive dashboard, an Excel workbook with native charts, a Tableau workbook, a
+  Power BI semantic model in TMDL with DAX measures, and static PNG charts. Change a
+  query and every artifact changes with it, so the dashboard and the workbook cannot
+  drift apart.</p>
+  <p class="note">There are no <code>.pbix</code> or <code>.twbx</code> files in these
+  repositories, deliberately. A binary workbook cannot be diffed, cannot be reviewed in
+  a pull request, cannot be opened without a licence, and carries its own copy of the
+  data that drifts from the source. The Tableau XML and Power BI TMDL are committed as
+  readable text instead.</p>
+
+  <h2>Tools</h2>
+  <div class="stack">
+    <span class="tool">SQL &middot; window functions, CTEs, star schemas</span>
+    <span class="tool">Power BI &middot; DAX, TMDL</span>
+    <span class="tool">Tableau</span>
+    <span class="tool">Excel &middot; pivot tables, openpyxl</span>
+    <span class="tool">Python &middot; pandas, matplotlib</span>
+    <span class="tool">SQLite</span>
+    <span class="tool">Requirements &amp; process mapping</span>
+    <span class="tool">UAT</span>
+  </div>
+
+  <h2>About the data</h2>
+  <p>All five projects use fully synthetic data generated by the scripts in each
+  repository. They do not use employer data, patient information, protected health
+  information, or confidential business information. The operational patterns are
+  modeled on real ones; the records are not real.</p>
+</div>
+
+<footer><div class="wrap">
+  Sahra Fanousi &middot; Texas &middot;
+  <a href="mailto:careersahrafanousi@gmail.com">careersahrafanousi@gmail.com</a> &middot;
+  <a href="https://github.com/careersahrafanousi-debug">github.com/careersahrafanousi-debug</a>
+</div></footer>
+</body>
+</html>
