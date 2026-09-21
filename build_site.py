@@ -96,7 +96,7 @@ h3.grp:first-of-type{border-top:0;padding-top:0;margin-top:30px}
   background:var(--good);margin-right:7px;vertical-align:1px}
 
 /* ---- skills ---- */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:26px}
 .sk{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
 .sk h5{margin:0 0 12px;font-size:.78rem;font-family:var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--accent);font-weight:600}
@@ -149,7 +149,7 @@ skills = "".join(
     + "</ul></div>" for s in D["skills"])
 
 STRIP = [("%d" % len(ALL), "end-to-end projects"), ("%d" % len(ALL), "live dashboards"),
-         ("115k+", "synthetic records"), ("4", "BI outputs each"), ("100%", "synthetic data")]
+         ("750k+", "synthetic rows"), ("4", "BI outputs each"), ("100%", "synthetic data")]
 strip = "".join(f"<div><b>{v}</b><span>{l}</span></div>" for v, l in STRIP)
 
 HTML = f"""<!DOCTYPE html>
@@ -157,8 +157,8 @@ HTML = f"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sahra Fanousi — Healthcare Operations Analytics</title>
-<meta name="description" content="Healthcare appeals analyst. {len(ALL)} end-to-end analytics projects on synthetic payer operations data: SQL, Power BI, Tableau, and live dashboards.">
+<title>Sahra Fanousi — Operations Analytics and Business Analysis</title>
+<meta name="description" content="Healthcare appeals analyst. {len(ALL)} end-to-end analytics projects on fully synthetic data: SQL, statistics, Power BI, Tableau, and live dashboards.">
 <meta property="og:title" content="Sahra Fanousi — Healthcare Operations Analytics">
 <meta property="og:description" content="{len(ALL)} end-to-end analytics projects on synthetic payer operations data.">
 <meta property="og:type" content="website">
@@ -176,7 +176,7 @@ HTML = f"""<!DOCTYPE html>
 </div></nav>
 
 <header><div class="wrap">
-  <p class="role">Healthcare operations · Business analysis · Analytics</p>
+  <p class="role">Healthcare operations · Business analysis · Statistics</p>
   <h1>I find where operational<br>work loses time and money.</h1>
   <p class="lede">I work appeals on the operations side of a payer — intake through
   adjudication — and I build the SQL and reporting that operations leaders use to
@@ -193,7 +193,7 @@ HTML = f"""<!DOCTYPE html>
 
 <section id="work"><div class="wrap">
   <h2>Portfolio</h2>
-  <p class="h2note">{len(ALL)} end-to-end projects on fully synthetic healthcare data. Each one ships
+  <p class="h2note">{len(ALL)} end-to-end projects on fully synthetic data — five in healthcare operations, three outside it. Each one ships
   runnable code, a data-quality gate that excludes bad records rather than quietly fixing
   them, SQL analysis, a live dashboard, and the business-analysis documents that turn a
   finding into something a team can implement.</p>
@@ -208,12 +208,13 @@ HTML = f"""<!DOCTYPE html>
 
 <section id="built"><div class="wrap">
   <h2>How it's built</h2>
-  <p class="h2note">Every repository runs the same way from a clean clone:</p>
-<pre>python src/generate_data.py    <span class="cmt"># synthetic source files</span>
-python src/dq_checks.py       <span class="cmt"># data-quality gate</span>
-python src/load_sqlite.py     <span class="cmt"># star schema</span>
-python src/build_dashboard.py <span class="cmt"># interactive HTML</span>
-python src/build_bi_assets.py <span class="cmt"># Excel, Tableau, Power BI, charts</span></pre>
+  <p class="h2note">Every repository runs the same way from a clean clone. Script names differ slightly where a project needs an extra step — reconciliation, experiment statistics, a model fit — but the shape is always the same:</p>
+<pre>python src/generate_data.py     <span class="cmt"># synthetic source files, fixed seed</span>
+python src/clean_validate.py    <span class="cmt"># data-quality gate; failures excluded, not repaired</span>
+python src/load_sqlite.py       <span class="cmt"># star schema</span>
+python src/model.py             <span class="cmt"># statistics, written back as queryable tables</span>
+python src/build_dashboard.py   <span class="cmt"># interactive HTML</span>
+python src/build_bi_assets.py   <span class="cmt"># Excel, Tableau, Power BI, charts</span></pre>
   <p>The last step is the part worth a conversation. One file of SQL is the single
   definition of every number, and one generator renders it into five outputs: the
   interactive dashboard, an Excel workbook with native charts, a Tableau workbook, a

@@ -1,85 +1,280 @@
 {
-  "user": "careersahrafanousi-debug",
-  "groups": [
+ "user": "careersahrafanousi-debug",
+ "groups": [
+  {
+   "id": "throughput",
+   "label": "Throughput and deadlines",
+   "blurb": "Where operational work loses time, and what to change.",
+   "projects": [
     {
-      "id": "throughput",
-      "label": "Throughput and deadlines",
-      "blurb": "Where operational work loses time, and what to change.",
-      "projects": [
-        {
-          "repo": "appeals-friction-radar",
-          "title": "Appeals Friction Radar",
-          "q": "Where does an appeal actually lose its days?",
-          "finding": "The queue with the <strong>tightest</strong> deadline is the one that misses it. Urgent appeals take 15.5 days against a 7-day target; standard appeals take 14.8 against 30. Stage dwell time measured with SQL window functions.",
-          "metrics": [
-            {"v": "16.5%", "l": "urgent SLA compliance", "tone": "bad"},
-            {"v": "15.5d", "l": "vs 7-day target"},
-            {"v": "35,443", "l": "workflow events"}
-          ],
-          "tags": ["SQL window functions", "Process mapping", "SLA analysis"]
-        },
-        {
-          "repo": "case-assignment-fairness",
-          "title": "Case Assignment Fairness",
-          "q": "Are some teams slower, or are they handed harder work?",
-          "finding": "A 25.9%–84.2% spread across teams looked like a performance gap. It was routing: 14% of cases produced <strong>41% of all lateness</strong>. This reversed the stakeholder's starting hypothesis.",
-          "metrics": [
-            {"v": "41%", "l": "of lateness from 14% of cases", "tone": "warn"},
-            {"v": "79h", "l": "vs 48-hour target"},
-            {"v": "15,908", "l": "cases · 35 analysts"}
-          ],
-          "tags": ["Root-cause analysis", "Workload equity", "Routing design"]
-        },
-        {
-          "repo": "capacity-to-deadline-optimizer",
-          "title": "Capacity-to-Deadline Optimizer",
-          "q": "Can cancelled slots be refilled from the waitlist in time?",
-          "finding": "Reminders cut no-shows from 15.7% to <strong>5.3%</strong>. Found 507 refillable cancelled slots and ranked 1,786 waitlisted patients against them with a match score, so a scheduler knows who to call.",
-          "metrics": [
-            {"v": "5.3%", "l": "no-show with reminder", "tone": "good"},
-            {"v": "507", "l": "refillable slots"},
-            {"v": "13,951", "l": "appointments"}
-          ],
-          "tags": ["Scoring model", "Capacity planning", "Scenario analysis"]
-        }
-      ]
+     "repo": "appeals-friction-radar",
+     "title": "Appeals Friction Radar",
+     "q": "Where does an appeal actually lose its days?",
+     "finding": "The queue with the <strong>tightest</strong> deadline is the one that misses it. Urgent appeals take 15.5 days against a 7-day target; standard appeals take 14.8 against 30. Stage dwell time measured with SQL window functions.",
+     "metrics": [
+      {
+       "v": "16.5%",
+       "l": "urgent SLA compliance",
+       "tone": "bad"
+      },
+      {
+       "v": "15.5d",
+       "l": "vs 7-day target"
+      },
+      {
+       "v": "35,443",
+       "l": "workflow events"
+      }
+     ],
+     "tags": [
+      "SQL window functions",
+      "Process mapping",
+      "SLA analysis"
+     ]
     },
     {
-      "id": "money",
-      "label": "Dollars and data trust",
-      "blurb": "Where money leaks, and whether the numbers can be trusted.",
-      "projects": [
-        {
-          "repo": "denial-prevention-simulator",
-          "title": "Denial Prevention Simulator",
-          "q": "Which denials were preventable before the claim went out?",
-          "finding": "Of $5.42M denied, <strong>$4.48M — 82.7% of denied dollars</strong> — traces to five causes checkable at submission. Turned that into a pre-submission risk queue that scores claims before they leave.",
-          "metrics": [
-            {"v": "82.7%", "l": "of denied dollars preventable", "tone": "warn"},
-            {"v": "$4.48M", "l": "modeled opportunity"},
-            {"v": "11,967", "l": "claims"}
-          ],
-          "tags": ["Risk scoring", "Control design", "Cost analysis"]
-        },
-        {
-          "repo": "kpi-trust-ledger",
-          "title": "KPI Trust Ledger",
-          "q": "Why does the same KPI have four different values?",
-          "finding": "Backlog reported as <strong>423 / 611 / 509 / 211</strong> depending on which system you asked. Attributed every variance, certified 2 of 6 KPIs for leadership use, and documented exactly why the other four could not be.",
-          "metrics": [
-            {"v": "2 of 6", "l": "KPIs certified", "tone": "bad"},
-            {"v": "4 values", "l": "for one backlog metric"},
-            {"v": "3", "l": "source systems reconciled"}
-          ],
-          "tags": ["Data reconciliation", "KPI governance", "Definitions and lineage"]
-        }
-      ]
+     "repo": "case-assignment-fairness",
+     "title": "Case Assignment Fairness",
+     "q": "Are some teams slower, or are they handed harder work?",
+     "finding": "A 25.9%\u201384.2% spread across teams looked like a performance gap. It was routing: 14% of cases produced <strong>41% of all lateness</strong>. This reversed the stakeholder's starting hypothesis.",
+     "metrics": [
+      {
+       "v": "41%",
+       "l": "of lateness from 14% of cases",
+       "tone": "warn"
+      },
+      {
+       "v": "79h",
+       "l": "vs 48-hour target"
+      },
+      {
+       "v": "15,908",
+       "l": "cases \u00b7 35 analysts"
+      }
+     ],
+     "tags": [
+      "Root-cause analysis",
+      "Workload equity",
+      "Routing design"
+     ]
+    },
+    {
+     "repo": "capacity-to-deadline-optimizer",
+     "title": "Capacity-to-Deadline Optimizer",
+     "q": "Can cancelled slots be refilled from the waitlist in time?",
+     "finding": "Reminders cut no-shows from 15.7% to <strong>5.3%</strong>. Found 507 refillable cancelled slots and ranked 1,786 waitlisted patients against them with a match score, so a scheduler knows who to call.",
+     "metrics": [
+      {
+       "v": "5.3%",
+       "l": "no-show with reminder",
+       "tone": "good"
+      },
+      {
+       "v": "507",
+       "l": "refillable slots"
+      },
+      {
+       "v": "13,951",
+       "l": "appointments"
+      }
+     ],
+     "tags": [
+      "Scoring model",
+      "Capacity planning",
+      "Scenario analysis"
+     ]
     }
-  ],
-  "skills": [
-    {"group": "Query and model", "items": ["SQL — window functions, CTEs", "Star schema design", "SQLite", "Data quality gates"]},
-    {"group": "Visualize", "items": ["Power BI — DAX, TMDL", "Tableau", "Excel — pivots, openpyxl", "Interactive HTML dashboards"]},
-    {"group": "Build", "items": ["Python — pandas, matplotlib", "ETL pipelines", "Git version control"]},
-    {"group": "Business analysis", "items": ["Requirements and acceptance criteria", "Process mapping", "UAT test cases", "Stakeholder readouts"]}
-  ]
+   ]
+  },
+  {
+   "id": "money",
+   "label": "Dollars and data trust",
+   "blurb": "Where money leaks, and whether the numbers can be trusted.",
+   "projects": [
+    {
+     "repo": "denial-prevention-simulator",
+     "title": "Denial Prevention Simulator",
+     "q": "Which denials were preventable before the claim went out?",
+     "finding": "Of $5.42M denied, <strong>$4.48M \u2014 82.7% of denied dollars</strong> \u2014 traces to five causes checkable at submission. Turned that into a pre-submission risk queue that scores claims before they leave.",
+     "metrics": [
+      {
+       "v": "82.7%",
+       "l": "of denied dollars preventable",
+       "tone": "warn"
+      },
+      {
+       "v": "$4.48M",
+       "l": "modeled opportunity"
+      },
+      {
+       "v": "11,967",
+       "l": "claims"
+      }
+     ],
+     "tags": [
+      "Risk scoring",
+      "Control design",
+      "Cost analysis"
+     ]
+    },
+    {
+     "repo": "kpi-trust-ledger",
+     "title": "KPI Trust Ledger",
+     "q": "Why does the same KPI have four different values?",
+     "finding": "Backlog reported as <strong>423 / 611 / 509 / 211</strong> depending on which system you asked. Attributed every variance, certified 2 of 6 KPIs for leadership use, and documented exactly why the other four could not be.",
+     "metrics": [
+      {
+       "v": "2 of 6",
+       "l": "KPIs certified",
+       "tone": "bad"
+      },
+      {
+       "v": "4 values",
+       "l": "for one backlog metric"
+      },
+      {
+       "v": "3",
+       "l": "source systems reconciled"
+      }
+     ],
+     "tags": [
+      "Data reconciliation",
+      "KPI governance",
+      "Definitions and lineage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "label": "Beyond healthcare",
+   "blurb": "The same method applied to retention, experimentation and fraud \u2014 because it is a method, not a domain.",
+   "projects": [
+    {
+     "repo": "subscription-churn-retention",
+     "title": "Subscription Churn and Retention",
+     "q": "Which acquisition channel keeps customers, and is that the channel's fault?",
+     "finding": "Paid Social retained 51.2% at month 6 against Member Referral's 78.3% \u2014 a 27-point spread. Standardising on discount mix narrows it to <strong>20.3 points</strong>, so a quarter of the \u201cchannel gap\u201d is a discounting decision, not a channel.",
+     "metrics": [
+      {
+       "v": "27.1\u219220.3",
+       "l": "point spread after standardising",
+       "tone": "warn"
+      },
+      {
+       "v": "63.6%",
+       "l": "month-6 retention"
+      },
+      {
+       "v": "67,784",
+       "l": "ledger rows \u00b7 24 months"
+      }
+     ],
+     "tags": [
+      "Cohort retention",
+      "Direct standardisation",
+      "GRR and NRR"
+     ]
+    },
+    {
+     "repo": "funnel-experiment-readout",
+     "title": "Funnel Conversion and Experiment Readout",
+     "q": "The A/B test won by 4.28 points. Should it ship?",
+     "finding": "Ship to desktop, not mobile \u2014 and not because mobile lost. The headline is a <strong>+8.81pp desktop win</strong> diluted by a mobile result that was never powered to detect it. Mobile is inconclusive, not null.",
+     "metrics": [
+      {
+       "v": "+4.28pp",
+       "l": "headline lift \u00b7 p<0.001",
+       "tone": "good"
+      },
+      {
+       "v": "22pt",
+       "l": "desktop vs mobile checkout gap",
+       "tone": "bad"
+      },
+      {
+       "v": "27/28",
+       "l": "days a peek would have called it"
+      }
+     ],
+     "tags": [
+      "A/B testing",
+      "Power and MDE",
+      "SRM checks",
+      "Guardrail metrics"
+     ]
+    },
+    {
+     "repo": "chargeback-screening",
+     "title": "Chargeback Screening",
+     "q": "The chargeback rate looks like it fell 74%. Did it?",
+     "finding": "No \u2014 disputes arrive up to 120 days late. Once maturity is respected, a ranked queue catches <strong>123 disputes against the rule engine's 67</strong> at identical analyst cost. McNemar p&lt;0.001. The threshold, though, should not move.",
+     "metrics": [
+      {
+       "v": "123 vs 67",
+       "l": "catches at equal review volume",
+       "tone": "good"
+      },
+      {
+       "v": "1.47%",
+       "l": "true rate \u00b7 0.38% as reported",
+       "tone": "bad"
+      },
+      {
+       "v": "11.0%",
+       "l": "of loss recoverable at best"
+      }
+     ],
+     "tags": [
+      "Class imbalance",
+      "Logistic regression in NumPy",
+      "McNemar's test",
+      "Cost-benefit threshold"
+     ]
+    }
+   ]
+  }
+ ],
+ "skills": [
+  {
+   "group": "Query and model",
+   "items": [
+    "SQL \u2014 window functions, CTEs",
+    "Star schema design",
+    "SQLite",
+    "Data quality gates",
+    "ETL pipelines"
+   ]
+  },
+  {
+   "group": "Statistics",
+   "items": [
+    "Hypothesis testing \u2014 z, chi-square, McNemar",
+    "Confidence intervals and bootstrap",
+    "Power and minimum detectable effect",
+    "Logistic regression and calibration",
+    "Cost-benefit thresholds"
+   ]
+  },
+  {
+   "group": "Build and visualize",
+   "items": [
+    "Python \u2014 pandas, NumPy, matplotlib",
+    "Power BI \u2014 DAX, TMDL",
+    "Tableau",
+    "Excel \u2014 pivots, openpyxl",
+    "Interactive HTML dashboards",
+    "Git version control"
+   ]
+  },
+  {
+   "group": "Business analysis",
+   "items": [
+    "Requirements and acceptance criteria",
+    "Process mapping, as-is and to-be",
+    "UAT test cases and defect logs",
+    "Stakeholder readouts"
+   ]
+  }
+ ]
 }

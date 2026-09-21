@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sahra Fanousi — Healthcare Operations Analytics</title>
-<meta name="description" content="Healthcare appeals analyst. 5 end-to-end analytics projects on synthetic payer operations data: SQL, Power BI, Tableau, and live dashboards.">
+<title>Sahra Fanousi — Operations Analytics and Business Analysis</title>
+<meta name="description" content="Healthcare appeals analyst. 8 end-to-end analytics projects on fully synthetic data: SQL, statistics, Power BI, Tableau, and live dashboards.">
 <meta property="og:title" content="Sahra Fanousi — Healthcare Operations Analytics">
-<meta property="og:description" content="5 end-to-end analytics projects on synthetic payer operations data.">
+<meta property="og:description" content="8 end-to-end analytics projects on synthetic payer operations data.">
 <meta property="og:type" content="website">
 <style>
 *{box-sizing:border-box}
@@ -98,7 +98,7 @@ h3.grp:first-of-type{border-top:0;padding-top:0;margin-top:30px}
   background:var(--good);margin-right:7px;vertical-align:1px}
 
 /* ---- skills ---- */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:26px}
 .sk{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
 .sk h5{margin:0 0 12px;font-size:.78rem;font-family:var(--mono);letter-spacing:.1em;
   text-transform:uppercase;color:var(--accent);font-weight:600}
@@ -134,7 +134,7 @@ footer a{color:var(--muted);text-decoration:underline}
 </div></nav>
 
 <header><div class="wrap">
-  <p class="role">Healthcare operations · Business analysis · Analytics</p>
+  <p class="role">Healthcare operations · Business analysis · Statistics</p>
   <h1>I find where operational<br>work loses time and money.</h1>
   <p class="lede">I work appeals on the operations side of a payer — intake through
   adjudication — and I build the SQL and reporting that operations leaders use to
@@ -146,12 +146,12 @@ footer a{color:var(--muted);text-decoration:underline}
     <a class="btn" href="https://github.com/careersahrafanousi-debug">GitHub</a>
     <a class="btn" href="mailto:careersahrafanousi@gmail.com">careersahrafanousi@gmail.com</a>
   </div>
-  <div class="strip"><div><b>5</b><span>end-to-end projects</span></div><div><b>5</b><span>live dashboards</span></div><div><b>115k+</b><span>synthetic records</span></div><div><b>4</b><span>BI outputs each</span></div><div><b>100%</b><span>synthetic data</span></div></div>
+  <div class="strip"><div><b>8</b><span>end-to-end projects</span></div><div><b>8</b><span>live dashboards</span></div><div><b>750k+</b><span>synthetic rows</span></div><div><b>4</b><span>BI outputs each</span></div><div><b>100%</b><span>synthetic data</span></div></div>
 </div></header>
 
 <section id="work"><div class="wrap">
   <h2>Portfolio</h2>
-  <p class="h2note">5 end-to-end projects on fully synthetic healthcare data. Each one ships
+  <p class="h2note">8 end-to-end projects on fully synthetic data — five in healthcare operations, three outside it. Each one ships
   runnable code, a data-quality gate that excludes bad records rather than quietly fixing
   them, SQL analysis, a live dashboard, and the business-analysis documents that turn a
   finding into something a team can implement.</p>
@@ -219,22 +219,60 @@ footer a{color:var(--muted);text-decoration:underline}
         </div>
       </article>
     </div>
+    <h3 class="grp">Beyond healthcare</h3>
+    <p class="grpnote">The same method applied to retention, experimentation and fraud — because it is a method, not a domain.</p>
+    <div class="grid">
+      <article class="card">
+        <h4><a href="https://github.com/careersahrafanousi-debug/subscription-churn-retention">Subscription Churn and Retention</a></h4>
+        <p class="q">Which acquisition channel keeps customers, and is that the channel&#x27;s fault?</p>
+        <div class="mrow"><div class="m warn"><b>27.1→20.3</b><span>point spread after standardising</span></div><div class="m "><b>63.6%</b><span>month-6 retention</span></div><div class="m "><b>67,784</b><span>ledger rows · 24 months</span></div></div>
+        <p class="finding">Paid Social retained 51.2% at month 6 against Member Referral's 78.3% — a 27-point spread. Standardising on discount mix narrows it to <strong>20.3 points</strong>, so a quarter of the “channel gap” is a discounting decision, not a channel.</p>
+        <div class="tags"><span class="tag">Cohort retention</span><span class="tag">Direct standardisation</span><span class="tag">GRR and NRR</span></div>
+        <div class="cardlinks">
+          <a class="chip live" href="https://careersahrafanousi-debug.github.io/subscription-churn-retention/dashboard/">Live dashboard</a>
+          <a class="chip" href="https://github.com/careersahrafanousi-debug/subscription-churn-retention">Code and docs</a>
+        </div>
+      </article>
+      <article class="card">
+        <h4><a href="https://github.com/careersahrafanousi-debug/funnel-experiment-readout">Funnel Conversion and Experiment Readout</a></h4>
+        <p class="q">The A/B test won by 4.28 points. Should it ship?</p>
+        <div class="mrow"><div class="m good"><b>+4.28pp</b><span>headline lift · p&lt;0.001</span></div><div class="m bad"><b>22pt</b><span>desktop vs mobile checkout gap</span></div><div class="m "><b>27/28</b><span>days a peek would have called it</span></div></div>
+        <p class="finding">Ship to desktop, not mobile — and not because mobile lost. The headline is a <strong>+8.81pp desktop win</strong> diluted by a mobile result that was never powered to detect it. Mobile is inconclusive, not null.</p>
+        <div class="tags"><span class="tag">A/B testing</span><span class="tag">Power and MDE</span><span class="tag">SRM checks</span><span class="tag">Guardrail metrics</span></div>
+        <div class="cardlinks">
+          <a class="chip live" href="https://careersahrafanousi-debug.github.io/funnel-experiment-readout/dashboard/">Live dashboard</a>
+          <a class="chip" href="https://github.com/careersahrafanousi-debug/funnel-experiment-readout">Code and docs</a>
+        </div>
+      </article>
+      <article class="card">
+        <h4><a href="https://github.com/careersahrafanousi-debug/chargeback-screening">Chargeback Screening</a></h4>
+        <p class="q">The chargeback rate looks like it fell 74%. Did it?</p>
+        <div class="mrow"><div class="m good"><b>123 vs 67</b><span>catches at equal review volume</span></div><div class="m bad"><b>1.47%</b><span>true rate · 0.38% as reported</span></div><div class="m "><b>11.0%</b><span>of loss recoverable at best</span></div></div>
+        <p class="finding">No — disputes arrive up to 120 days late. Once maturity is respected, a ranked queue catches <strong>123 disputes against the rule engine's 67</strong> at identical analyst cost. McNemar p&lt;0.001. The threshold, though, should not move.</p>
+        <div class="tags"><span class="tag">Class imbalance</span><span class="tag">Logistic regression in NumPy</span><span class="tag">McNemar&#x27;s test</span><span class="tag">Cost-benefit threshold</span></div>
+        <div class="cardlinks">
+          <a class="chip live" href="https://careersahrafanousi-debug.github.io/chargeback-screening/dashboard/">Live dashboard</a>
+          <a class="chip" href="https://github.com/careersahrafanousi-debug/chargeback-screening">Code and docs</a>
+        </div>
+      </article>
+    </div>
 </div></section>
 
 <section id="skills"><div class="wrap">
   <h2>Skills</h2>
   <p class="h2note">Every item below is used in at least one project in this portfolio, not just listed.</p>
-  <div class="skills"><div class="sk"><h5>Query and model</h5><ul><li>SQL — window functions, CTEs</li><li>Star schema design</li><li>SQLite</li><li>Data quality gates</li></ul></div><div class="sk"><h5>Visualize</h5><ul><li>Power BI — DAX, TMDL</li><li>Tableau</li><li>Excel — pivots, openpyxl</li><li>Interactive HTML dashboards</li></ul></div><div class="sk"><h5>Build</h5><ul><li>Python — pandas, matplotlib</li><li>ETL pipelines</li><li>Git version control</li></ul></div><div class="sk"><h5>Business analysis</h5><ul><li>Requirements and acceptance criteria</li><li>Process mapping</li><li>UAT test cases</li><li>Stakeholder readouts</li></ul></div></div>
+  <div class="skills"><div class="sk"><h5>Query and model</h5><ul><li>SQL — window functions, CTEs</li><li>Star schema design</li><li>SQLite</li><li>Data quality gates</li><li>ETL pipelines</li></ul></div><div class="sk"><h5>Statistics</h5><ul><li>Hypothesis testing — z, chi-square, McNemar</li><li>Confidence intervals and bootstrap</li><li>Power and minimum detectable effect</li><li>Logistic regression and calibration</li><li>Cost-benefit thresholds</li></ul></div><div class="sk"><h5>Build and visualize</h5><ul><li>Python — pandas, NumPy, matplotlib</li><li>Power BI — DAX, TMDL</li><li>Tableau</li><li>Excel — pivots, openpyxl</li><li>Interactive HTML dashboards</li><li>Git version control</li></ul></div><div class="sk"><h5>Business analysis</h5><ul><li>Requirements and acceptance criteria</li><li>Process mapping, as-is and to-be</li><li>UAT test cases and defect logs</li><li>Stakeholder readouts</li></ul></div></div>
 </div></section>
 
 <section id="built"><div class="wrap">
   <h2>How it's built</h2>
-  <p class="h2note">Every repository runs the same way from a clean clone:</p>
-<pre>python src/generate_data.py    <span class="cmt"># synthetic source files</span>
-python src/dq_checks.py       <span class="cmt"># data-quality gate</span>
-python src/load_sqlite.py     <span class="cmt"># star schema</span>
-python src/build_dashboard.py <span class="cmt"># interactive HTML</span>
-python src/build_bi_assets.py <span class="cmt"># Excel, Tableau, Power BI, charts</span></pre>
+  <p class="h2note">Every repository runs the same way from a clean clone. Script names differ slightly where a project needs an extra step — reconciliation, experiment statistics, a model fit — but the shape is always the same:</p>
+<pre>python src/generate_data.py     <span class="cmt"># synthetic source files, fixed seed</span>
+python src/clean_validate.py    <span class="cmt"># data-quality gate; failures excluded, not repaired</span>
+python src/load_sqlite.py       <span class="cmt"># star schema</span>
+python src/model.py             <span class="cmt"># statistics, written back as queryable tables</span>
+python src/build_dashboard.py   <span class="cmt"># interactive HTML</span>
+python src/build_bi_assets.py   <span class="cmt"># Excel, Tableau, Power BI, charts</span></pre>
   <p>The last step is the part worth a conversation. One file of SQL is the single
   definition of every number, and one generator renders it into five outputs: the
   interactive dashboard, an Excel workbook with native charts, a Tableau workbook, a
@@ -250,7 +288,7 @@ python src/build_bi_assets.py <span class="cmt"># Excel, Tableau, Power BI, char
 
 <section id="data"><div class="wrap">
   <h2>About the data</h2>
-  <p>All 5 projects use fully synthetic data generated by the scripts in each repository.
+  <p>All 8 projects use fully synthetic data generated by the scripts in each repository.
   They do not use employer data, patient information, protected health information, or
   confidential business information. The operational patterns are modeled on real ones;
   the records are not real.</p>
