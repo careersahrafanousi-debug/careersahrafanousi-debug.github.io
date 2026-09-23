@@ -193,7 +193,7 @@ HTML = f"""<!DOCTYPE html>
 
 <section id="work"><div class="wrap">
   <h2>Portfolio</h2>
-  <p class="h2note">{len(ALL)} end-to-end projects on fully synthetic data — five in healthcare operations, three outside it. Each one ships
+  <p class="h2note">{len(ALL)} end-to-end projects on fully synthetic data — five in healthcare operations, four outside it. Each one ships
   runnable code, a data-quality gate that excludes bad records rather than quietly fixing
   them, SQL analysis, a live dashboard, and the business-analysis documents that turn a
   finding into something a team can implement.</p>

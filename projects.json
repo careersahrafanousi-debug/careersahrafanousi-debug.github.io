@@ -36,7 +36,7 @@
      "repo": "case-assignment-fairness",
      "title": "Case Assignment Fairness",
      "q": "Are some teams slower, or are they handed harder work?",
-     "finding": "A 25.9%\u201384.2% spread across teams looked like a performance gap. It was routing: 14% of cases produced <strong>41% of all lateness</strong>. This reversed the stakeholder's starting hypothesis.",
+     "finding": "A 25.9%–84.2% spread across teams looked like a performance gap. It was routing: 14% of cases produced <strong>41% of all lateness</strong>. This reversed the stakeholder's starting hypothesis.",
      "metrics": [
       {
        "v": "41%",
@@ -49,7 +49,7 @@
       },
       {
        "v": "15,908",
-       "l": "cases \u00b7 35 analysts"
+       "l": "cases · 35 analysts"
       }
      ],
      "tags": [
@@ -95,7 +95,7 @@
      "repo": "denial-prevention-simulator",
      "title": "Denial Prevention Simulator",
      "q": "Which denials were preventable before the claim went out?",
-     "finding": "Of $5.42M denied, <strong>$4.48M \u2014 82.7% of denied dollars</strong> \u2014 traces to five causes checkable at submission. Turned that into a pre-submission risk queue that scores claims before they leave.",
+     "finding": "Of $5.42M denied, <strong>$4.48M — 82.7% of denied dollars</strong> — traces to five causes checkable at submission. Turned that into a pre-submission risk queue that scores claims before they leave.",
      "metrics": [
       {
        "v": "82.7%",
@@ -148,16 +148,16 @@
   {
    "id": "beyond",
    "label": "Beyond healthcare",
-   "blurb": "The same method applied to retention, experimentation and fraud \u2014 because it is a method, not a domain.",
+   "blurb": "The same method applied to retention, experimentation and fraud — because it is a method, not a domain.",
    "projects": [
     {
      "repo": "subscription-churn-retention",
      "title": "Subscription Churn and Retention",
      "q": "Which acquisition channel keeps customers, and is that the channel's fault?",
-     "finding": "Paid Social retained 51.2% at month 6 against Member Referral's 78.3% \u2014 a 27-point spread. Standardising on discount mix narrows it to <strong>20.3 points</strong>, so a quarter of the \u201cchannel gap\u201d is a discounting decision, not a channel.",
+     "finding": "Paid Social retained 51.2% at month 6 against Member Referral's 78.3% — a 27-point spread. Standardising on discount mix narrows it to <strong>20.3 points</strong>, so a quarter of the “channel gap” is a discounting decision, not a channel.",
      "metrics": [
       {
-       "v": "27.1\u219220.3",
+       "v": "27.1→20.3",
        "l": "point spread after standardising",
        "tone": "warn"
       },
@@ -167,7 +167,7 @@
       },
       {
        "v": "67,784",
-       "l": "ledger rows \u00b7 24 months"
+       "l": "ledger rows · 24 months"
       }
      ],
      "tags": [
@@ -180,11 +180,11 @@
      "repo": "funnel-experiment-readout",
      "title": "Funnel Conversion and Experiment Readout",
      "q": "The A/B test won by 4.28 points. Should it ship?",
-     "finding": "Ship to desktop, not mobile \u2014 and not because mobile lost. The headline is a <strong>+8.81pp desktop win</strong> diluted by a mobile result that was never powered to detect it. Mobile is inconclusive, not null.",
+     "finding": "Ship to desktop, not mobile — and not because mobile lost. The headline is a <strong>+8.81pp desktop win</strong> diluted by a mobile result that was never powered to detect it. Mobile is inconclusive, not null.",
      "metrics": [
       {
        "v": "+4.28pp",
-       "l": "headline lift \u00b7 p<0.001",
+       "l": "headline lift · p<0.001",
        "tone": "good"
       },
       {
@@ -208,7 +208,7 @@
      "repo": "chargeback-screening",
      "title": "Chargeback Screening",
      "q": "The chargeback rate looks like it fell 74%. Did it?",
-     "finding": "No \u2014 disputes arrive up to 120 days late. Once maturity is respected, a ranked queue catches <strong>123 disputes against the rule engine's 67</strong> at identical analyst cost. McNemar p&lt;0.001. The threshold, though, should not move.",
+     "finding": "No — disputes arrive up to 120 days late. Once maturity is respected, a ranked queue catches <strong>123 disputes against the rule engine's 67</strong> at identical analyst cost. McNemar p&lt;0.001. The threshold, though, should not move.",
      "metrics": [
       {
        "v": "123 vs 67",
@@ -217,7 +217,7 @@
       },
       {
        "v": "1.47%",
-       "l": "true rate \u00b7 0.38% as reported",
+       "l": "true rate · 0.38% as reported",
        "tone": "bad"
       },
       {
@@ -233,13 +233,46 @@
      ]
     }
    ]
+  },
+  {
+   "id": "finance",
+   "label": "Finance and business decisions",
+   "blurb": "A month-end P&L review: where the profit went, which stores to act on, and whether a price change worked.",
+   "projects": [
+    {
+     "repo": "store-pnl-variance",
+     "title": "Store P&L Variance",
+     "q": "Sales beat plan. Why did profit miss by $371k?",
+     "finding": "A price-volume-mix bridge that <strong>reconciles to the cent</strong> in all 96 store-months. Of three loss-making stores, one is a schedule, one is traffic, and one is only allocated overhead: closing it would <strong>cut company profit by $145k</strong>. A staggered price rollout, tested with difference-in-differences, raised net sales 2.57% (p = 0.0022).",
+     "metrics": [
+      {
+       "v": "−$370,864",
+       "l": "four-wall vs budget",
+       "tone": "bad"
+      },
+      {
+       "v": "$0.00",
+       "l": "bridge residual"
+      },
+      {
+       "v": "+2.57%",
+       "l": "net sales from price increase"
+      }
+     ],
+     "tags": [
+      "Variance analysis",
+      "FP&A",
+      "Difference-in-differences"
+     ]
+    }
+   ]
   }
  ],
  "skills": [
   {
    "group": "Query and model",
    "items": [
-    "SQL \u2014 window functions, CTEs",
+    "SQL — window functions, CTEs",
     "Star schema design",
     "SQLite",
     "Data quality gates",
@@ -249,8 +282,9 @@
   {
    "group": "Statistics",
    "items": [
-    "Hypothesis testing \u2014 z, chi-square, McNemar",
+    "Hypothesis testing — z, chi-square, McNemar",
     "Confidence intervals and bootstrap",
+    "Difference-in-differences and permutation tests",
     "Power and minimum detectable effect",
     "Logistic regression and calibration",
     "Cost-benefit thresholds"
@@ -259,10 +293,10 @@
   {
    "group": "Build and visualize",
    "items": [
-    "Python \u2014 pandas, NumPy, matplotlib",
-    "Power BI \u2014 DAX, TMDL",
+    "Python — pandas, NumPy, matplotlib",
+    "Power BI — DAX, TMDL",
     "Tableau",
-    "Excel \u2014 pivots, openpyxl",
+    "Excel — pivots, openpyxl",
     "Interactive HTML dashboards",
     "Git version control"
    ]
@@ -270,6 +304,7 @@
   {
    "group": "Business analysis",
    "items": [
+    "P&L variance bridges and decision rules",
     "Requirements and acceptance criteria",
     "Process mapping, as-is and to-be",
     "UAT test cases and defect logs",
